@@ -25,3 +25,10 @@ python manage.py runserver - roda o servidor
 toda vez que eu modificar qualquer model, é preciso fazer a migração
 -- python manage.py makemigrations
 -- python manage.py migrate
+
+
+Se deu BO na databse e vc pode reiniciá-la:
+    - exclua todas as migrations da pasta
+    - deleta a base de dados db.sqlite3
+    - makemigrations && migrate
+    - superuser, runserver
