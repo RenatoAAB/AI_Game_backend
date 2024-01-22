@@ -1,6 +1,7 @@
 from django.db import models
 
 # Create your models here.
+local_teste = 'ImagensTeste'
 
 class Comportamento(models.Model):
     nome = models.CharField(max_length=200, default='padrao')
@@ -18,6 +19,7 @@ class Ataque(models.Model):
 
 
 class Carta(models.Model):
+    imagem = models.ImageField(upload_to=local_teste, null=True, blank=True)
     nome = models.CharField(max_length=200, unique=True)
     custo = models.IntegerField()
     vida = models.IntegerField()

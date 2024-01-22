@@ -122,3 +122,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+#configurações para salvar e localizar as imagens
+MEDIA_ROOT = ''
+
+MEDIA_URL = 'AI_Game_backend/'
