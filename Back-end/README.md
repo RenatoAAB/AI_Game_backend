@@ -21,6 +21,8 @@
 - python manage.py test <nome_do_app>  #para testar o app, executa os testes em tests.py
 - python manage.py startapp <nome_do_app>
 - python manage.py runserver - roda o servidor
+- Ctrl+Shift+V é pra visualizar preview do markdown no VSCode
+
 
 > toda vez que modificar qualquer model, é preciso fazer a migração
 > - python manage.py makemigrations
