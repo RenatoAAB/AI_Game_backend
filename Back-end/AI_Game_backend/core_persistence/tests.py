@@ -2,7 +2,6 @@ from django.test import TestCase
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APIClient
-from .serializers import CartaSerializer
 from .models import Carta, Comportamento, Tipo, Ataque, Deck, CardInDeck
 import json
 
@@ -133,11 +132,6 @@ class CardInDeckCreateViewTest(TestCase):
         Carta.objects.all().delete()
 
     def test_create_card_in_deck(self):
-        #comportamento = Comportamento.objects.create(nome='agressivo')
-        #tipo = Tipo.objects.create(nome='carne')
-        #ataque = Ataque.objects.create(nome='Fireball', tipo=tipo, valor=3, isAOE=False)
-        #carta = Carta.objects.create(comportamento=comportamento, tipo=tipo, ataque=ataque, nome='Mago de fogo aprendiz', custo=2, agilidade=7, vida=3)
-
         card_in_deck_data = {
             'deck': {'nome': self.deck.nome},
             'carta': self.carta,

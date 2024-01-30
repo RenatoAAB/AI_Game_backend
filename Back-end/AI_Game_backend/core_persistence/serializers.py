@@ -1,7 +1,6 @@
 # serializers.py
 from rest_framework import serializers
 from .models import Carta, Comportamento, Tipo, Ataque, Deck, CardInDeck
-from django.db import IntegrityError
 
 #parece que é aqui que a gente lida com essas dependencias dos modelos...
 

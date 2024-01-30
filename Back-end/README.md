@@ -10,10 +10,10 @@
 - admin.py é pra registrar databases e models e usar no painel de admin  
 - apps.py ?  
 - models.py -- database models  
-- tests.py são os testes  
+- tests.py são os testes  - estão testadas carta, deck, cardInDeck
 - views.py -- criar views/roots pra acessar do website/jogo  
 - templates - é uma página dedicada a html para mostrar melhor dados  
-- serializers - é responsavel por serializar os dados  
+- serializers - é responsavel por serializar os dados - é possível criar todos os componentes a partir da view final de cardInDeck
 
 
 ## Comandos uteis
