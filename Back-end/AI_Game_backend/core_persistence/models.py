@@ -4,11 +4,11 @@ from django.db import models
 local_teste = 'ImagensTeste'
 
 class Comportamento(models.Model):
-    nome = models.CharField(max_length=200, default='padrao', primary_key=True)
+    nome = models.CharField(max_length=200, default='padrao')
 
 # Tipo é o constituinte de um ataque ou o material do qual um monstro é feito, talvez seja bom mudar para enum
 class Tipo(models.Model):
-    nome = models.CharField(max_length=200, default='carne', primary_key=True)
+    nome = models.CharField(max_length=200, default='carne')
 
 
 class Ataque(models.Model):

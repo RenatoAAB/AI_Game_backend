@@ -133,19 +133,18 @@ class CardInDeckCreateViewTest(TestCase):
         Carta.objects.all().delete()
 
     def test_create_card_in_deck(self):
-        comportamento = Comportamento.objects.create(nome='agressivo')
-        tipo = Tipo.objects.create(nome='carne')
-        ataque = Ataque.objects.create(nome='Fireball', tipo=tipo, valor=3, isAOE=False)
-        carta = Carta.objects.create(comportamento=comportamento, tipo=tipo, ataque=ataque, nome='Mago de fogo aprendiz', custo=2, agilidade=7, vida=3)
+        #comportamento = Comportamento.objects.create(nome='agressivo')
+        #tipo = Tipo.objects.create(nome='carne')
+        #ataque = Ataque.objects.create(nome='Fireball', tipo=tipo, valor=3, isAOE=False)
+        #carta = Carta.objects.create(comportamento=comportamento, tipo=tipo, ataque=ataque, nome='Mago de fogo aprendiz', custo=2, agilidade=7, vida=3)
 
         card_in_deck_data = {
             'deck': {'nome': self.deck.nome},
-            'carta': CartaSerializer(carta),
+            'carta': self.carta,
             'position': '1'
         }
 
         response = self.client.post(reverse('card_in_deck-create'), card_in_deck_data, format='json')
-        print(response.data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(CardInDeck.objects.count(), 1)
 

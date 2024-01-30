@@ -1,6 +1,7 @@
 # serializers.py
 from rest_framework import serializers
 from .models import Carta, Comportamento, Tipo, Ataque, Deck, CardInDeck
+from django.db import IntegrityError
 
 #parece que é aqui que a gente lida com essas dependencias dos modelos...
 
@@ -119,11 +120,24 @@ class CardInDeckSerializer(serializers.ModelSerializer):
         card_data = validated_data.pop('carta')
 
         deck_instance, _ = Deck.objects.get_or_create(**deck_data)
-        card_instance, _ = Carta.objects.get_or_create(**card_data)
 
-        card_in_deck_instance = CardInDeck.objects.create(
-            deck=deck_instance,
-            carta=card_instance,
-            **validated_data
+        comportamento_data = card_data.pop('comportamento')
+        tipo_data = card_data.pop('tipo')
+        ataque_data = card_data.pop('ataque')
+
+        comportamento, _ = Comportamento.objects.get_or_create(**comportamento_data)
+        tipo, _ = Tipo.objects.get_or_create(**tipo_data)
+
+        ataque_serializer = AtaqueSerializer(data=ataque_data)
+        ataque_serializer.is_valid(raise_exception=True)
+        ataque = ataque_serializer.save()
+
+        card_instance, _ = Carta.objects.get_or_create(
+            comportamento=comportamento,
+            tipo=tipo,
+            ataque=ataque,
+            **card_data
         )
+
+        card_in_deck_instance = CardInDeck.objects.create(deck=deck_instance, carta=card_instance, **validated_data)
         return card_in_deck_instance

@@ -68,7 +68,7 @@ class DeckViews(APIView):
     
     def delete(self, request, format=None):
         nome = request.data.get('nome', None)
-        if name:
+        if nome:
             try:
                 deck = Deck.objects.get(nome=nome)
                 deck.delete()
